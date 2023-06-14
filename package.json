@@ -1,0 +1,11 @@
+{
+  "name": "voltage-zap-demo",
+  "version": "1.0.0",
+  "description": "test for voltage and zap",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
