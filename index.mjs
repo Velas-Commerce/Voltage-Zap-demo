@@ -13,8 +13,9 @@ const grpc = new LndGrpc({
 })
 
 var main = async () => {
+  console.log("main");
   await grpc.connect()
-
+  console.log("connnected:")
   // Do something if the wallet gets unlocked.
   grpc.on(`active`, () => console.log('wallet unlocked!'))
 
@@ -37,7 +38,7 @@ var main = async () => {
   await grpc.waitForState('active');
   console.log(`state: ${grpc.state}`); 
 
-  // await grpc.activateLightning();
+  await grpc.activateLightning();
 
   const { Lightning, Autopilot, Invoices } = grpc.services
 
