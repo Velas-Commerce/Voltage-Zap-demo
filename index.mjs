@@ -40,17 +40,12 @@ var main = async () => {
 
   await grpc.activateLightning();
 
-  const { Lightning, Autopilot, Invoices } = grpc.services
+  const { Lightning, Invoices } = grpc.services
+
+  await Lightning.getInfo();
 
   await grpc.disconnect()
 };
 
 
-main();
-
-// console.log(Lightning)
-
-// const balance = await Lightning.walletBalance()
-// console.log(balance);
-
-// console.log("grpc is now disconnected");
+await main();
