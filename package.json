@@ -4,8 +4,12 @@
   "description": "test for voltage and zap",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.mjs"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.4",
+    "lnd-grpc": "^0.5.4"
+  }
 }
