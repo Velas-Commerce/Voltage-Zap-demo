@@ -130,5 +130,5 @@ dist
 .pnp.*
 
 # lnd config
-admin.macaroon
-tls.cert
+admin.macaroon*
+tls.cert*
