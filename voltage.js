@@ -73,6 +73,53 @@ async function main() {
   client.listChannels(requestListChannels, function (err, response) {
     console.log("listChannels:", response);
   });
+
+  let walletBalanceRequest = {};
+    client.walletBalance(walletBalanceRequest, function(err, response) {
+        console.log("walletBalance:", response);
+    }
+    );
+    client.WalletBalance({}, function(err, response) {
+        console.log("WalletBalance:", response);
+    }
+    );
+    // implement the /* lncli: `listpeers` proto 
+    let requestListPeers = {
+        // latest_error: <string>,
+        // peer: <bytes>,
+    };
+    client.listPeers(requestListPeers, function(err, response) {
+        console.log("listPeers:", response);
+    }
+    );
+    // implement the rpc SubscribeInvoices streaming service
+    let requestSubscribeInvoices = {
+        // add_index: <uint64>,
+        // settle_index: <uint64>,
+    };
+    client.subscribeInvoices(requestSubscribeInvoices, function(err, response) {
+        console.log("subscribeInvoices:", response);
+    }
+    );
+
+    // test the subscribeInvoices streaming service
+    let call = client.subscribeInvoices({});
+    call.on('data', function(invoice) {
+        console.log("invoice:", invoice);
+    }
+    );
+    call.on('end', function() {
+        console.log("end");
+    }
+    );
+    call.on('status', function(status) {
+        console.log("status:", status);
+    }
+    );
+    call.on('error', function(err) {
+        console.log("error:", err);
+    }
+    );
 }
 
 main();
