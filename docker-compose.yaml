@@ -1,0 +1,36 @@
+version: "3"
+services:
+  node:
+    container_name: node
+    hostname: node
+    image: node
+    stdin_open: true
+    tty: true
+    working_dir: /code
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/code
+      - node_modules:/code/node_modules
+    depends_on:
+      - btcd
+
+  btcd:
+    container_name: btcd
+    hostname: btcd
+    # build: https://github.com/btcsuite/btcd.git#master
+    image: btcd
+    build: ./btcd
+    restart: unless-stopped
+    # volumes:
+    #   - btcd_data:/root/.btcd/data
+    #   - btcd_logs:/root/.btcd/logs
+    ports:
+      - 18555:18555
+      - 18556:18556
+    # command: ["--simnet", "--rpcuser=admin", "--rpcpass=password"]
+
+volumes:
+  node_modules:
+  # btcd_data:
+  # btcd_logs:

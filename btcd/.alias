@@ -1,0 +1,2 @@
+alias btcctl='btcctl --simnet --rpcuser=admin --rpcpass=password'
+alias btcwallet='btcwallet --simnet'
