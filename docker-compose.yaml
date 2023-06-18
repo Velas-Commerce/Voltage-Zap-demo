@@ -13,22 +13,17 @@ services:
       - .:/code
       - node_modules:/code/node_modules
     depends_on:
-      - btcd
+      - btcsuite
 
-  btcd:
-    container_name: btcd
-    hostname: btcd
-    # build: https://github.com/btcsuite/btcd.git#master
-    image: btcd
-    build: ./btcd
+  btcsuite:
+    container_name: btcsuite
+    hostname: btcsuite
+    image: btcsuite
+    build: ./btcsuite
     restart: unless-stopped
-    # volumes:
-    #   - btcd_data:/root/.btcd/data
-    #   - btcd_logs:/root/.btcd/logs
     ports:
       - 18555:18555
       - 18556:18556
-    # command: ["--simnet", "--rpcuser=admin", "--rpcpass=password"]
 
 volumes:
   node_modules:

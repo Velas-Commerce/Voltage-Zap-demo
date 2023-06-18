@@ -13,9 +13,10 @@ RUN GO111MODULE=on go install -v . ./cmd/...
 WORKDIR /root
 
 COPY btcd.conf /root/.btcd/
+COPY btcwallet.conf /root/.btcwallet/
 
-COPY .alias .
-RUN cat .alias > /root/.bashrc
+COPY .aliases .
+RUN cat .aliases > /root/.bashrc
 
 COPY entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["entrypoint.sh"]

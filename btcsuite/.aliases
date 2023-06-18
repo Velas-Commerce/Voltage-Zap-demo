@@ -1,0 +1,1 @@
+alias btcctl='btcctl --simnet --rpcuser=admin --rpcpass=password'

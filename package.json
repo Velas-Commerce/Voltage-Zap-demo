@@ -12,7 +12,7 @@
     "docker:image:btcd": "docker build https://github.com/btcsuite/btcd.git#master -t btcd",
     "docker:image:lnd": "docker build https://github.com/lightningnetwork/lnd.git#master -t lnd",
     "docker:images": "run-s docker:image:btcd docker:image:lnd",
-    "docker:btcd": "docker compose exec -it btcd /bin/bash"
+    "docker:btcsuite": "docker compose exec -it btcsuite /bin/bash"
   },
   "author": "",
   "license": "ISC",
