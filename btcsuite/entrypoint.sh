@@ -1,3 +1,3 @@
 #!/bin/bash
-# btcd
+set -e
 tail -f /dev/null

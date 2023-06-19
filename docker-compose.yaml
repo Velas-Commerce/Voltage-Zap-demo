@@ -25,14 +25,14 @@ services:
       - 18555:18555
       - 18556:18556
 
-  alice:
-    container_name: alice
-    hostname: alice
-    image: alice_lnd
-    build: ./lnd
-    restart: unless-stopped
-    depends_on:
-      - btcsuite
+  # alice:
+  #   container_name: alice
+  #   hostname: alice
+  #   image: alice_lnd
+  #   build: ./lnd
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - btcsuite
 
 volumes:
   node_modules:

@@ -8,7 +8,7 @@ WORKDIR /go/src/github.com/lightningnetwork
 RUN git clone https://github.com/lightningnetwork/lnd.git
 
 # btcd
-RUN cd /go/src/github.com/btcsuite/btcwallet/btcd && \ 
+RUN cd /go/src/github.com/btcsuite/btcd && \ 
     GO111MODULE=on go install -v . ./cmd/...
 
 # btcwallet
@@ -27,7 +27,6 @@ COPY btcwallet.conf /root/.btcwallet/
 WORKDIR /root
 COPY .aliases .
 RUN cat .aliases > /root/.bashrc
-
-
 COPY entrypoint.sh /usr/local/bin/
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
 ENTRYPOINT ["entrypoint.sh"]

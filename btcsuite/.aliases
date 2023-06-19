@@ -1,2 +1,2 @@
-alias btcctl='btcctl --simnet --rpcuser=admin --rpcpass=password'
+alias btcctl="btcctl --simnet --rpcuser=admin --rpcpass=password"
 alias lncli="lncli -n simnet"
