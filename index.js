@@ -48,6 +48,7 @@ async function main() {
 
   let client = new lnrpc.Lightning(HOST, credentials);
 
+  // getInfo
   client.getInfo({}, (err, response) => {
     if (err) {
       console.log("Error: " + err);
@@ -55,6 +56,7 @@ async function main() {
     console.log("GetInfo:", response);
   });
 
+  // addInvoice
   let requestAddInvoice = {
     memo: "test from node.js",
     value: 200,
@@ -63,6 +65,7 @@ async function main() {
     console.log("Invoice:", response);
   });
 
+  // listChannels
   let requestListChannels = {
     active_only: true,
     // inactive_only: true,
@@ -74,52 +77,47 @@ async function main() {
     console.log("listChannels:", response);
   });
 
+  // walletBalance
   let walletBalanceRequest = {};
-    client.walletBalance(walletBalanceRequest, function(err, response) {
-        console.log("walletBalance:", response);
-    }
-    );
-    client.WalletBalance({}, function(err, response) {
-        console.log("WalletBalance:", response);
-    }
-    );
-    // implement the /* lncli: `listpeers` proto 
-    let requestListPeers = {
-        // latest_error: <string>,
-        // peer: <bytes>,
-    };
-    client.listPeers(requestListPeers, function(err, response) {
-        console.log("listPeers:", response);
-    }
-    );
-    // implement the rpc SubscribeInvoices streaming service
-    let requestSubscribeInvoices = {
-        // add_index: <uint64>,
-        // settle_index: <uint64>,
-    };
-    client.subscribeInvoices(requestSubscribeInvoices, function(err, response) {
-        console.log("subscribeInvoices:", response);
-    }
-    );
+  client.walletBalance(walletBalanceRequest, function (err, response) {
+    console.log("walletBalance:", response);
+  });
+  client.WalletBalance({}, function (err, response) {
+    console.log("WalletBalance:", response);
+  });
 
-    // test the subscribeInvoices streaming service
-    let call = client.subscribeInvoices({});
-    call.on('data', function(invoice) {
-        console.log("invoice:", invoice);
-    }
-    );
-    call.on('end', function() {
-        console.log("end");
-    }
-    );
-    call.on('status', function(status) {
-        console.log("status:", status);
-    }
-    );
-    call.on('error', function(err) {
-        console.log("error:", err);
-    }
-    );
+  // listpeers
+  let requestListPeers = {
+    // latest_error: <string>,
+    // peer: <bytes>,
+  };
+  client.listPeers(requestListPeers, function (err, response) {
+    console.log("listPeers:", response);
+  });
+
+  // implement the rpc SubscribeInvoices streaming service
+  let requestSubscribeInvoices = {
+    // add_index: <uint64>,
+    // settle_index: <uint64>,
+  };
+  client.subscribeInvoices(requestSubscribeInvoices, function (err, response) {
+    console.log("subscribeInvoices:", response);
+  });
+
+  // test the subscribeInvoices streaming service
+  let call = client.subscribeInvoices({});
+  call.on("data", function (invoice) {
+    console.log("invoice:", invoice);
+  });
+  call.on("end", function () {
+    console.log("end");
+  });
+  call.on("status", function (status) {
+    console.log("status:", status);
+  });
+  call.on("error", function (err) {
+    console.log("error:", err);
+  });
 }
 
 main();

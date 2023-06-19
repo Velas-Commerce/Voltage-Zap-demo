@@ -1,19 +1,19 @@
 version: "3"
 services:
-  node:
-    container_name: node
-    hostname: node
-    image: node
-    stdin_open: true
-    tty: true
-    working_dir: /code
-    ports:
-      - 3000:3000
-    volumes:
-      - .:/code
-      - node_modules:/code/node_modules
-    depends_on:
-      - btcsuite
+  # node:
+  #   container_name: node
+  #   hostname: node
+  #   image: node
+  #   stdin_open: true
+  #   tty: true
+  #   working_dir: /code
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - .:/code
+  #     - node_modules:/code/node_modules
+  #   depends_on:
+  #     - btcsuite
 
   btcsuite:
     container_name: btcsuite
@@ -24,6 +24,15 @@ services:
     ports:
       - 18555:18555
       - 18556:18556
+
+  alice:
+    container_name: alice
+    hostname: alice
+    image: alice_lnd
+    build: ./lnd
+    restart: unless-stopped
+    depends_on:
+      - btcsuite
 
 volumes:
   node_modules:

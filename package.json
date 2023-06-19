@@ -4,15 +4,14 @@
   "description": "test for voltage and zap",
   "main": "index.js",
   "scripts": {
-    "zap": "node zap.mjs",
-    "grpc": "node grpc.js",
-    "voltage": "node -r dotenv/config voltage.js",
+    "voltage": "node -r dotenv/config index.js",
     "docker:up": "docker compose up",
     "docker:down": "docker compose down",
     "docker:image:btcd": "docker build https://github.com/btcsuite/btcd.git#master -t btcd",
     "docker:image:lnd": "docker build https://github.com/lightningnetwork/lnd.git#master -t lnd",
     "docker:images": "run-s docker:image:btcd docker:image:lnd",
-    "docker:btcsuite": "docker compose exec -it btcsuite /bin/bash"
+    "docker:btcsuite": "docker compose exec -it btcsuite /bin/bash",
+    "docker:alice": "docker compose exec -it alice /bin/bash"
   },
   "author": "",
   "license": "ISC",
